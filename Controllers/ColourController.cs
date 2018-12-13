@@ -17,9 +17,9 @@ namespace ColoursTest.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Colour> Get()
+        public IActionResult Get()
         {
-            return _colourService.Get();
+            return Ok(_colourService.Get());
         }
     }
 }

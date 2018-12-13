@@ -22,21 +22,15 @@ namespace ColoursTest.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public IActionResult Get()
         {
-            return _peopleService.Get();
-        }
-
-        [HttpPost]
-        public void Post([FromBody] Person person)
-        {
-            _peopleService.Post(person);
+            return Ok(_peopleService.Get());
         }
 
         [HttpPut]
-        public void Update([FromBody] Person person)
+        public IActionResult Update([FromBody] Person person)
         {
-            _peopleService.Update(person);
+            return Ok(_peopleService.Update(person));
         }
     }
 }

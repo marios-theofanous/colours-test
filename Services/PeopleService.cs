@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using ColoursTest.Models;
 using ColoursTest.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
@@ -31,12 +32,7 @@ namespace ColoursTest.Services
             }
         }
 
-        public void Post(Person person)
-        {
-            _peopleRepository.Create(person);
-        }
-
-        public void Update(Person person)
+        public Person Update(Person person)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -48,6 +44,7 @@ namespace ColoursTest.Services
 
                     transaction.Commit();
                 }
+                return person;
             }
         }
     }

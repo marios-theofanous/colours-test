@@ -36,20 +36,6 @@ namespace ColoursTest.Repositories
                 .ToList();
         }
 
-        public void Create(Person person)
-        {
-            throw new NotImplementedException();
-            // To be implemented
-//            const string sql = @"INSERT [dbo].[People] (
-//                        [FirstName], [LastName], [IsAuthorised], [IsValid], [IsEnabled]) 
-//                        VALUES (@FirstName, @LastName, @IsAuthorised, @IsValid, @IsEnabled)";
-//
-//            using (var connection = new SqlConnection(ConnectionString))
-//            {
-//                var affectedLines = connection.Execute(sql, person);
-//            }
-        }
-
         public void Update(Person person, IDbConnection connection, IDbTransaction transaction)
         {
             const string sql = @"UPDATE People
