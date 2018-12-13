@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ColoursTest.Models;
 using ColoursTest.Repositories;
 using ColoursTest.Services;
@@ -12,10 +13,12 @@ namespace ColoursTest.Controllers
     public class PeopleController : ControllerBase
     {
         private readonly IPeopleService _peopleService;
+        private readonly IFavouriteColourService _favouriteColourService;
 
-        public PeopleController(IPeopleService peopleService)
+        public PeopleController(IPeopleService peopleService, IFavouriteColourService favouriteColourService)
         {
             _peopleService = peopleService;
+            _favouriteColourService = favouriteColourService;
         }
 
         [HttpGet]
@@ -25,9 +28,15 @@ namespace ColoursTest.Controllers
         }
 
         [HttpPost]
-        public bool Post([FromBody] Person person)
+        public void Post([FromBody] Person person)
         {
-            return _peopleService.Post(person);
+            _peopleService.Post(person);
+        }
+
+        [HttpPut]
+        public void Update([FromBody] Person person)
+        {
+            _peopleService.Update(person);
         }
     }
 }

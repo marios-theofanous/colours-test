@@ -32,6 +32,10 @@ namespace ColoursTest
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<IColourService, ColourService>();
             services.AddScoped<IColourRepository, ColourRepository>();
+            services.AddScoped<IFavouriteColourService, FavouriteColourService>();
+            services.AddScoped<IFavouriteColourRepository, FavouriteColourRepository>();
+//            services.Configure<string>(Configuration.GetSection("ConnectionString"));
+            services.AddSingleton(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

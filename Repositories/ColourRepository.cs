@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using ColoursTest.Models;
 using Dapper;
@@ -8,16 +9,10 @@ namespace ColoursTest.Repositories
 {
     public class ColourRepository : IColourRepository
     {
-        private const string ConnectionString =
-            "user id=sa;password=Password123;Data Source=localhost;Database=TechTest;";
-        
-        public IEnumerable<Colour> Read()
+        public IEnumerable<Colour> Read(IDbConnection connection)
         {
-            using (var connection = new SqlConnection(ConnectionString))
-            {
-                const string sql = @"SELECT * FROM Colours";
-                return connection.Query<Colour>(sql);
-            }
+            const string sql = @"SELECT * FROM Colours";
+            return connection.Query<Colour>(sql);
         }
     }
 }

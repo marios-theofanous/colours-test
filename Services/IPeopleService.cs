@@ -7,6 +7,7 @@ namespace ColoursTest.Services
     public interface IPeopleService
     {
         IEnumerable<Person> Get();
-        bool Post(Person person);
+        void Post(Person person);
+        void Update(Person person);
     }
 }

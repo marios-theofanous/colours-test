@@ -16,7 +16,6 @@ namespace ColoursTest.Controllers
             _colourService = colourService;
         }
 
-        // GET
         [HttpGet]
         public IEnumerable<Colour> Get()
         {
